@@ -7,18 +7,22 @@ from django.conf import settings
 # Create your views here.
 def pythonPoweredEmailApplication(request,):
     if request.method == 'POST':
-        # senderEmailAddress = request.POST['senderEmailAddress']
-        receiverEmailAddress = request.POST['email']  #receiverEmailAddress
-        # cc = request.POST['cc']
-        # attachFiles = request.POST['attachFiles']
+        senderEmailAddress = request.POST['senderEmailAddress']
+        receiverEmailAddress = request.POST['receiverEmailAddress']  #receiverEmailAddress
+        cc = request.POST['cc']
+        attachFiles = request.POST['attachFiles']
         subject = request.POST('subject')
         body = request.POST('body')
-        send = request.POST('send')
         send_mail(
-            'Send Email', #title
-            body, #body of the message
+            'settings.EMAIL_HOST',
+            senderEmailAddress,
             'settings.EMAIL_HOST_USER',
-            ['bolosbolosmpjcss@gmail.com', 'n01297959@humbermail.ca'],
+            receiverEmailAddress,
+            'settings.CC',
+            [cc],
+            'Send Email',  # title
+            body,  # body of the message
+            'Subject',
             fail_silenty=False,
         )
     return render(request, 'pythonpoweredemailapplication.html')
