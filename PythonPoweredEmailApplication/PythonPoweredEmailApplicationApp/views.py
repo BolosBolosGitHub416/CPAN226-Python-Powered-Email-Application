@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 # Create your views here.
+
 def pythonPoweredEmailApplication(request,):
     if request.method == 'POST':
         senderEmailAddress = request.POST['senderEmailAddress']
