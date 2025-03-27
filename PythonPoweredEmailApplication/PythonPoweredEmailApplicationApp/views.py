@@ -12,11 +12,11 @@ def pythonPoweredEmailApplication(request,):
         # cc = request.POST['cc']
         # attachFiles = request.POST['attachFiles']
         subject = request.POST('subject')
-        message = request.POST('message')
+        body = request.POST('body')
         send = request.POST('send')
         send_mail(
             'Send Email', #title
-            message, #message
+            body, #body of the message
             'settings.EMAIL_HOST_USER',
             ['bolosbolosmpjcss@gmail.com', 'n01297959@humbermail.ca'],
             fail_silenty=False,
