@@ -11,7 +11,7 @@ def pythonPoweredEmailApplication(request,):
         senderEmailAddress = request.POST['senderEmailAddress']
         receiverEmailAddress = request.POST['receiverEmailAddress']  #receiverEmailAddress
         cc = request.POST['cc']
-        attachFiles = request.POST['attachFiles']
+        #attachFiles = request.POST['attachFiles']
         subject = request.POST('subject')
         body = request.POST('body')
         send_mail(
@@ -24,6 +24,7 @@ def pythonPoweredEmailApplication(request,):
             'Send Email',  # title
             body,  # body of the message
             'Subject',
+            subject,
             fail_silenty=False,
         )
     return render(request, 'pythonpoweredemailapplication.html')
