@@ -25,11 +25,11 @@
             letter-spacing: 2px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        h3 {
+        label {
             color:black;
         }
         h4 {
-            color: black;
+            color: yellow;
         }
 
 /* Styling the card, including width, margin, background, and border. */
@@ -59,20 +59,24 @@
     <div class="card" style="width: 30rem;">
         <img class="card-img-top" src="https://img.freepik.com/premium-vector/computer-email-marketing-related-icons_24911-6496.jpg" alt="Card image cap" height="200px">
         <div class="card-body">
-            <h3> Send Email: </h3>
+            <h4> Send Email: </h4>
         <form method="POST" action="{% url 'pythonpoweredemailapplication' %}">
             {% csrf_token %}
             <label for="senderEmailAddress">Sender's email address: </label>
             <input type="email" name="senderEmailAddress" required><br>
+            <br>
             <label for="receiverEmailAddress">Receiver's email address: </label>
             <input type="email" name="receiverEmailAddress" required><br>
+            <br>
             <label for="cc">CC:</label>
             <input type="email" name="cc" required><br>
+            <br>
             <label for="attachFiles">Attach files:</label>
             <input type="file" name="attachFiles" required><br>
             <br>
             <label for="subject">Subject:</label>
             <input type="text" name="subject" placeholder="Subject:" required><br>
+            <br>
             <label for="body">Body:</label>
             <textarea name="body" required></textarea> <br>
             <button class="btn btn-primary mt-2" type="submit">Send</button>
