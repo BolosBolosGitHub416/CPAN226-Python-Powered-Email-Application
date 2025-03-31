@@ -1,30 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 
 # Create your views here.
 
 def pythonPoweredEmailApplication(request,):
     if request.method == 'POST':
-        senderEmailAddress = request.POST['senderEmailAddress']
-        receiverEmailAddress = request.POST['receiverEmailAddress']  #receiverEmailAddress
-        cc = request.POST['cc']
-        #attachFiles = request.POST['attachFiles']
-        subject = request.POST('subject')
-        body = request.POST('body')
-        send_mail(
-            'settings.EMAIL_HOST',
-            senderEmailAddress,
-            'settings.EMAIL_HOST_USER',
-            receiverEmailAddress,
-            'settings.CC',
-            [cc],
-            'Send Email',  # title
-            body,  # body of the message
-            'Subject',
-            subject,
-            fail_silenty=False,
+        sender_email = request.POST['sender_email']
+        recipient_email = request.POST['recipient_email']
+        cc_email = request.POST.get('cc_email', '')
+        attachment = request.FILES.get('attachment')
+        subject = request.POST['subject']
+        body = request.POST['body']
+
+        email = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=sender_email,
+            to=[recipient_email],
+            cc=[cc_email] if cc_email else [],
         )
-    return render(request, 'pythonpoweredemailapplication.html')
+
+        if attachment:
+            email.attach(attachment.name, attachment.read(), attachment.content_type)
+
+        email.send()
+        return HttpResponse("Email sent successfully!")
+
+
+    return render(request,"pythonpoweredemailapplication.html")

@@ -60,25 +60,25 @@
         <img class="card-img-top" src="https://img.freepik.com/premium-vector/computer-email-marketing-related-icons_24911-6496.jpg" alt="Card image cap" height="200px">
         <div class="card-body">
             <h4> Send Email: </h4>
-        <form method="POST" action="{% url 'pythonpoweredemailapplication' %}">
+        <form method="POST" action="{% url 'pythonpoweredemailapplication' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="senderEmailAddress">Sender's email address: </label>
-            <input type="email" name="senderEmailAddress" required><br>
+            <label>Sender's email address: </label>
+            <input type="email" name="sender_email" placeholder="From: " required><br>
             <br>
-            <label for="receiverEmailAddress">Receiver's email address: </label>
-            <input type="email" name="receiverEmailAddress" required><br>
+            <label>Receiver's email address: </label>
+            <input type="email" name="recipient_email" placeholder="To: " required><br>
             <br>
-            <label for="cc">CC:</label>
-            <input type="email" name="cc" required><br>
+            <label>CC (Optional):</label>
+            <input type="email" name="cc_email" placeholder="CC: "><br>
             <br>
-            <label for="attachFiles">Attach files:</label>
-            <input type="file" name="attachFiles" required><br>
+            <label>Attach file (Optional):</label>
+            <input type="file" name="attachment"><br>
             <br>
-            <label for="subject">Subject:</label>
-            <input type="text" name="subject" placeholder="Subject:" required><br>
+            <label>Subject:</label>
+            <input type="text" name="subject" placeholder="Subject:" ><br>
             <br>
-            <label for="body">Body:</label>
-            <textarea name="body" required></textarea> <br>
+            <label>Body:</label>
+            <textarea name="body"></textarea> <br>
             <button class="btn btn-primary mt-2" type="submit">Send</button>
         </form>
         </div>
