@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(ybv5(q2w&=!hf!=ygvsqgzow-sz$-1#8v91@76&7l@gfj#boc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# SMTP - GOOGLE - EMAIL TRANSFER SETTINGS
 DEBUG = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'mvzu qsbz wflo nlli'
-EMAIL_HOST_USER = 'bolos4060@gmail.com'
+EMAIL_HOST_PASSWORD = 'bjwk vyji mzxw pysb'
+EMAIL_HOST_USER = 'bolosbolosmpjcss@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -35,7 +36,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Installed Applications, with PythonPoweredEmailApplicationApp being added on
+# INSTALLED_APPS
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
