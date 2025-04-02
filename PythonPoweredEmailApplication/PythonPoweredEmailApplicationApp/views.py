@@ -27,14 +27,22 @@ def pythonPoweredEmailApplication(request,):
 
         # Validate all CC emails and remove invalid ones
         valid_cc_emails = [email for email in cc_email_list if is_valid_email(email)]
+        invalid_cc_emails = [email for email in cc_email_list if not is_valid_email(email)]
 
+        # Status Error Code 400 indicates Bad Request - usually for problems such as invalid syntax
+        # and incorrect URL.
         # Ensure sender email address is valid
         if not is_valid_email(sender_email_address):
-            return HttpResponse("Invalid sender email address format!", status=400)
+            return HttpResponse("Invalid sender email address!", status=400)
 
         # Ensure recipient email address is valid
         if not is_valid_email(recipient_email_address):
-            return HttpResponse("Invalid recipient email address format!", status=400)
+            return HttpResponse("Invalid recipient email address!", status=400)
+
+        # If there are invalid CC emails, return an error message
+        if invalid_cc_emails:
+            return HttpResponse("Invalid CC email address format!", status=400)
+
 
         # email - EmailMessage - Python - Django - object
         email = EmailMessage(
@@ -49,6 +57,7 @@ def pythonPoweredEmailApplication(request,):
         for attachment in request.FILES.getlist("attachments"):
             email.attach(attachment.name, attachment.read(), attachment.content_type)
         # The sender email sends the email to the recipient email through SMTP - Google
+        # Send email
         email.send()
         # Returns an HTTP response confirming the successful email transfer to the recipient email
         return HttpResponse("Email sent successfully!")

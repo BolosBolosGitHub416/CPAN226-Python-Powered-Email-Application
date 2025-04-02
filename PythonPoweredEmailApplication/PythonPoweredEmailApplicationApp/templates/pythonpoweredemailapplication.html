@@ -38,7 +38,7 @@ Templates Folder - Python - Django - File -->
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             color: green;
         }
-         /* Styling the h4 element, including color: yellow, label, and p */
+         /* Styling the h4 element, label, and p */
         label {
             color:black;
         }
@@ -95,8 +95,8 @@ Templates Folder - Python - Django - File -->
             <label>Receiver's email address: </label>
             <input type="email" name="recipient_email_address" placeholder="To: " required><br>
             <br>
-            <label>CC: (Optional)</label>
-            <input type="text" name="cc" placeholder="CC: "><br>
+            <label>CC: </label>
+            <input type="text" name="cc" placeholder="CC: " required><br>
             <br>
             <label>Attach files: </label>
             <input type="file" name="attachments" multiple required><br>
@@ -105,7 +105,7 @@ Templates Folder - Python - Django - File -->
             <input type="text" name="subject" placeholder="Subject:" required><br>
             <br>
             <label>Body:</label>
-            <textarea name="body"></textarea> <br>
+            <textarea name="body" placeholder="Body:"></textarea> <br>
             <button class="btn btn-primary mt-2" type="submit">Send</button>
         </form>
         </div>
